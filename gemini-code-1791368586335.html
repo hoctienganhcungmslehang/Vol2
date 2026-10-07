@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Reading Mock Test - Ms Lê Hằng English</title>
+  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap](https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap)" rel="stylesheet">
+  <script src="[https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js](https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js)"></script>
+  <style>
+    :root {
+      --primary: #8b5cf6;
+      --primary-dark: #6d28d9;
+      --pink: #f43f5e;
+      --teal: #06b6d4;
+      --green: #10b981;
+      --red: #ef4444;
+      --text: #1e293b;
+      --muted: #64748b;
+      --bg: linear-gradient(135deg, #fdf2f8 0%, #ede9fe 50%, #e0f2fe 100%);
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Nunito', sans-serif; }
+    body {
+      background: var(--bg);
+      min-height: 100vh;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 16px 40px;
+    }
+    .app-shell { width: 100%; max-width: 1400px; display: flex; flex-direction: column; gap: 12px; }
+    
+    /* Top Bar */
+    .top-bar {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.1);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 2px solid #fff;
+    }
+    .badge {
+      font-weight: 800;
+      font-size: 13.5px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-pink { background: var(--pink); }
+    .badge-teal { background: var(--teal); }
+    .hotline-banner {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      text-align: center;
+    }
+    .hotline-banner b { color: #e11d48; }
+
+    /* Hero / Timer */
+    .hero-card {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.08);
+      padding: 12px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1.5px solid #fff;
+    }
+    .hero-title { font-size: 19px; font-weight: 900; color: var(--primary-dark); }
+    .hero-sub { font-size: 12.5px; font-weight: 700; color: var(--muted); }
+    .timer-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fdf4ff;
+      border: 2px solid #f472b6;
+      padding: 5px 14px;
+      border-radius: 50px;
+    }
+    .timer-txt { font-size: 19px; font-weight: 900; color: #be185d; }
+    .btn-timer {
+      background: #ec4899;
+      color: #fff;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .progress-bar-wrap { width: 100%; background: #f1f5f9; height: 8px; border-radius: 999px; overflow: hidden; margin-top: 4px; }
+    .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4); transition: width 0.3s; }
+
+    /* Tabs */
+    .tab-bar { display: flex; gap: 8px; }
+    .tab-btn {
+      flex: 1;
+      padding: 10px 14px;
+      border: none;
+      background: var(--card);
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 13.5px;
+      color: var(--muted);
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.03);
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Split Screen */
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; height: calc(100vh - 240px); min-height: 550px; }
+    .pane {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.08);
+      overflow-y: auto;
+      padding: 20px;
+      border: 1.5px solid #fff;
+      scroll-behavior: smooth;
+    }
+    .pane::-webkit-scrollbar { width: 7px; }
+    .pane::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+
+    /* Passage Styles */
+    .passage-head { border-bottom: 2px dashed #e2e8f0; padding-bottom: 10px; margin-bottom: 14px; }
+    .p-title { font-size: 21px; font-weight: 900; color: #0f172a; }
+    .p-sub { font-size: 13px; font-style: italic; color: #64748b; margin-top: 3px; }
+    .para-box {
+      margin-bottom: 14px;
+      line-height: 1.68;
+      font-size: 14.5px;
+      color: #334155;
+      background: #fafafa;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border-left: 4px solid #c4b5fd;
+    }
+    .para-lbl { font-weight: 900; color: var(--primary); margin-right: 6px; }
+    .btn-trans {
+      margin-top: 8px;
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      color: #db2777;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .trans-box {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: #fff1f2;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #9f1239;
+      border-left: 3px solid #f43f5e;
+    }
+    .flash-target { background: #fde047 !important; color: #000 !important; border-radius: 4px; padding: 2px 4px; }
+    .user-highlighted { background: #ddd6fe !important; color: #4c1d95 !important; border-radius: 4px; padding: 2px 4px; font-weight: 700; }
+
+    /* Exercise Styles */
+    .sec-banner {
+      background: linear-gradient(90deg, #ede9fe, #fae8ff);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #6b21a8;
+      margin-bottom: 12px;
+      border-left: 4px solid #a855f7;
+    }
+    .q-card {
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+    .q-top { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .q-num {
+      font-weight: 900;
+      color: #fff;
+      background: var(--primary);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .q-txt { flex: 1; font-size: 14px; font-weight: 700; color: #1e293b; line-height: 1.4; }
+    
+    .sel-box, .inp-box {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 2px solid #cbd5e1;
+      font-size: 13.5px;
+      font-weight: 700;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .sel-box:focus, .inp-box:focus { border-color: var(--primary); }
+    .sel-box.correct, .inp-box.correct { border-color: #22c55e; background: #f0fdf4; color: #166534; }
+    .sel-box.wrong, .inp-box.wrong { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
+    
+    .fill-row { display: flex; gap: 6px; margin-top: 6px; }
+    .btn-chk {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 12.5px;
+      cursor: pointer;
+    }
+    
+    .mc-grid { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .mc-opt {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .mc-opt:hover:not(.disabled) { background: #f1f5f9; }
+    .mc-opt.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #15803d !important; font-weight: 800; }
+    .mc-opt.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
+
+    /* Khung giải thích chi tiết */
+    .detailed-exp-card {
+      display: none;
+      background: #ffffff;
+      border: 2px solid #fed7aa;
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-top: 12px;
+      box-shadow: 0 4px 16px rgba(249, 115, 22, 0.08);
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .exp-main-title {
+      color: #c2410c;
+      font-size: 15px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .btn-loc {
+      background: #7c3aed;
+      color: #fff;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-loc:hover { background: #6d28d9; transform: scale(1.05); }
+
+    .exp-trans-quote {
+      background: #fffbeb;
+      border-radius: 10px;
+      border-left: 5px solid #f59e0b;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      color: #78350f;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .exp-trans-quote b { color: #b45309; }
+
+    .exp-step-title {
+      font-size: 13.8px;
+      font-weight: 800;
+      color: #b45309;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .options-breakdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+    .option-chip {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #334155;
+    }
+    .option-chip b { color: #2563eb; }
+    .option-chip.highlight b { color: #059669; }
+
+    .badge-why-correct {
+      background: #dcfce7;
+      color: #15803d;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .badge-why-wrong {
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .exp-bullet-desc {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.55;
+      margin: 4px 0 12px 16px;
+    }
+    .exp-bullet-desc li { margin-bottom: 4px; }
+    .syn-tag {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+      display: inline-block;
+    }
+
+    .cambridge-section {
+      border-top: 1.5px dashed #fed7aa;
+      padding-top: 10px;
+      margin-top: 8px;
+    }
+    .cambridge-title { font-size: 13.5px; font-weight: 800; color: #ea580c; margin-bottom: 4px; }
+    .cambridge-guide-text { font-size: 12.5px; color: #475569; line-height: 1.4; margin-bottom: 8px; }
+    .cambridge-btn-group { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+    .cambridge-pill-btn {
+      background: linear-gradient(90deg, #ff5770 0%, #22c55e 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 3px 8px rgba(34, 197, 94, 0.2);
+      transition: all 0.2s;
+    }
+    .cambridge-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 12px rgba(255, 87, 112, 0.35); }
+    .cambridge-tip-footer { font-size: 11.5px; color: #64748b; font-style: italic; }
+
+    /* Footer Promo Banner */
+    .footer-promo {
+      background: linear-gradient(135deg, #f06292 0%, #b258cf 45%, #2575fc 100%);
+      border-radius: 20px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #fff;
+      margin-top: 6px;
+    }
+    .circle-icon {
+      width: 44px; height: 44px; border-radius: 50%; background: #ff5982;
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .pill-badge {
+      background: #fff; color: #1e88e5; font-weight: 900; font-size: 13.5px;
+      padding: 2px 12px; border-radius: 999px; display: inline-flex; margin-left: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .split-grid { grid-template-columns: 1fr; height: auto; }
+      .pane { height: 460px; }
+      .hotline-banner { display: none; }
+      .footer-promo { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- 1. HEADER STATUS -->
+    <header class="top-bar">
+      <div class="badge badge-pink" id="scoreBadge">★ 0/40</div>
+      <div class="hotline-banner">
+        <span>PH HS đăng kí học tiếng anh Khối 1 đến 12, IELTS vui lòng liên hệ <b>Ms Lê Hằng English</b> —</span>
+        <b>☎ Zalo: 0584 965 348</b>
+        <span>— Online + Offline tại Linh Đàm!</span>
+      </div>
+      <div class="badge badge-teal" id="countBadge">0/40 đã làm</div>
+    </header>
+
+    <!-- 2. HERO / TIMER -->
+    <section class="hero-card">
+      <div>
+        <div class="hero-title">🎯 IELTS READING MOCK TEST · MS LÊ HẰNG ENGLISH</div>
+        <div class="hero-sub">Hệ thống làm bài thi tương tác · Chấm tự động & Giải thích chi tiết 9.0</div>
+      </div>
+      <div class="timer-box">
+        <span>⏳</span>
+        <span class="timer-txt" id="timerTxt">20:00</span>
+        <button class="btn-timer" id="btnTimer" onclick="toggleTimer()">BẮT ĐẦU</button>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+    </section>
+
+    <!-- 3. TABS CHUYỂN PASSAGE -->
+    <nav class="tab-bar">
+      <button class="tab-btn active" id="tab1-btn" onclick="switchTab(1)">💤 Passage 1: Sleep Study (Q1-13)</button>
+      <button class="tab-btn" id="tab2-btn" onclick="switchTab(2)">🌲 Passage 2: Bristlecone Pines (Q14-26)</button>
+      <button class="tab-btn" id="tab3-btn" onclick="switchTab(3)">🗣️ Passage 3: Rare Languages (Q27-40)</button>
+    </nav>
+
+    <!-- 4. SPLIT SCREEN (BÀI ĐỌC BÊN TRÁI - BÀI TẬP BÊN PHẢI) -->
+    <div class="split-grid">
+      <!-- CỘT BÊN TRÁI: READING PASSAGES TĨNH TRỰC TIẾP -->
+      <div class="pane" id="passagePane">
+        
+        <!-- PASSAGE 1 -->
+        <div id="p-content-1">
+          <div class="passage-head">
+            <h1 class="p-title">Sleep Study on Modern-Day Hunter-Gatherers Dispels Popular Notions</h1>
+            <p class="p-sub">Nghiên cứu giấc ngủ của các bộ tộc săn bắt hái lượm thời hiện đại xóa tan các quan niệm phổ biến</p>
+          </div>
+          <div class="para-box" id="p1-A">
+            <span class="para-lbl">[Paragraph A]</span>
+            <span>Sleep disturbances in contemporary life are frequently blamed on industrialized environments, artificial lighting, extended work schedules, caffeine, and internet usage. Many believe our ancestors rested far more by synchronizing strictly with solar cycles. However, empirical findings reveal this assumption is inaccurate; pre-modern humans likely did not achieve the standard eight hours of nightly rest either.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-A-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-A-tr">Những rối loạn giấc ngủ trong đời sống hiện đại thường bị quy trách nhiệm cho môi trường công nghiệp, ánh sáng nhân tạo và nhịp sống bận rộn. Nhiều người cho rằng tổ tiên thời xưa ngủ nhiều hơn nhờ tuân theo chu kỳ mặt trời. Tuy nhiên, các nghiên cứu thực nghiệm đã chứng minh giả định này chưa chuẩn xác; con người tiền hiện đại thực chất cũng không ngủ đủ 8 tiếng mỗi đêm.</div>
+          </div>
+          <div class="para-box" id="p1-B">
+            <span class="para-lbl">[Paragraph B]</span>
+            <span>Scientists investigated sleep habits among remaining hunter-gatherer communities: the Hadza in Tanzania, San in Namibia, and Tsimane in Bolivia. Isolated from modern electrical grids and media distractions, these societies mirror habits from over 10,000 years ago. Medical monitoring of 94 volunteers across 1,165 total days provided comprehensive behavioral data.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-B-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-B-tr">Các nhà khoa học đã khảo sát thói quen ngủ của các cộng đồng săn bắt hái lượm biệt lập: người Hadza ở Tanzania, người San ở Namibia và người Tsimane ở Bolivia. Tách rời hoàn toàn khỏi lưới điện và truyền thông, các bộ tộc này phản ánh mô hình sinh hoạt từ 10.000 năm trước. Dữ liệu y tế từ 94 tình nguyện viên qua 1.165 ngày đã cung cấp bức tranh toàn diện.</div>
+          </div>
+          <div class="para-box" id="p1-C">
+            <span class="para-lbl">[Paragraph C]</span>
+            <span>Remarkable similarities emerged despite geographic divergence. All groups averaged under 6.5 hours of sleep nightly, avoided daytime naps, and remained awake well after darkness fell. They typically stayed in resting areas between 6.9 and 8.5 hours, reflecting sleep efficiency levels nearly identical to residents of industrialized countries.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-C-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-C-tr">Nghiên cứu ghi nhận sự tương đồng đáng ngạc nhiên: các nhóm chỉ ngủ trung bình dưới 6,5 giờ mỗi đêm, không ngủ trưa và không đi ngủ ngay khi trời tối. Họ nằm nghỉ khoảng 6,9 đến 8,5 giờ, cho thấy hiệu suất giấc ngủ gần như tương đương với cư dân tại các quốc gia công nghiệp hóa.</div>
+          </div>
+          <div class="para-box" id="p1-D">
+            <span class="para-lbl">[Paragraph D]</span>
+            <span>Jerome Siegel from UCLA suggests sleep patterns derive fundamentally from human biological constitution rather than cultural or external conditions. This challenges assumptions linking six-hour sleep directly to health disorders or afternoon fatigue, which was previously attributed to suppressed napping instincts.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-D-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-D-tr">Jerome Siegel từ Đại học UCLA cho rằng mô hình giấc ngủ bắt nguồn từ bản chất sinh học tự nhiên hơn là điều kiện văn hóa hay môi trường. Phát hiện này đặt dấu hỏi đối với các quan điểm cho rằng ngủ 6 tiếng là nguyên nhân chính gây bệnh lý hay sự suy giảm năng lượng vào buổi chiều.</div>
+          </div>
+          <div class="para-box" id="p1-E">
+            <span class="para-lbl">[Paragraph E]</span>
+            <span>The findings indicated napping was exceptionally uncommon, occurring on merely 7% of winter days and 22% of summer days. Although sensor limitations meant brief naps under 15 minutes might escape detection, habitual afternoon sleep was clearly not customary.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-E-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-E-tr">Kết quả cho thấy việc ngủ trưa rất hiếm khi diễn ra, chỉ xuất hiện vào 7% số ngày mùa đông và 22% số ngày mùa hè. Dù thiết bị đo lường có thể bỏ sót những giấc chợp mắt dưới 15 phút, thói quen ngủ trưa rõ ràng không phải là tập quán phổ biến.</div>
+          </div>
+          <div class="para-box" id="p1-F">
+            <span class="para-lbl">[Paragraph F]</span>
+            <span>Regarding circadian rhythms, individuals remained awake between 2.5 and 4.4 hours past sunset despite minimal illumination from campfires. Waking times closely tracked dawn, typically occurring within an hour before or after sunrise.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-F-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-F-tr">Về nhịp sinh học, người bộ tộc vẫn thức từ 2,5 đến 4,4 giờ sau khi mặt trời lặn dù chỉ có ánh lửa bập bùng. Thời điểm thức giấc của họ gắn liền với bình minh, thường diễn ra trong vòng một giờ trước hoặc sau khi mặt trời mọc.</div>
+          </div>
+          <div class="para-box" id="p1-G">
+            <span class="para-lbl">[Paragraph G]</span>
+            <span>Ambient temperature emerged as a vital regulatory factor, ranking just below light. Slumber generally coincided with nightly cooling periods, while waking corresponded with the daily morning warming peak.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-G-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-G-tr">Nhiệt độ môi trường đóng vai trò điều hòa quan trọng chỉ sau ánh sáng. Giấc ngủ thường diễn ra trong giai đoạn ban đêm hạ nhiệt, trong khi thời điểm tỉnh giấc trùng khớp với xu hướng nhiệt độ bắt đầu ấm lên vào ban ngày.</div>
+          </div>
+          <div class="para-box" id="p1-H">
+            <span class="para-lbl">[Paragraph H]</span>
+            <span>Notably, clinical insomnia was practically non-existent. Only 1.5% to 2.5% reported experiencing severe sleep difficulties annually, compared to 10%–30% in modern urban centers. Siegel notes replicating natural environmental cues could prove therapeutic for contemporary sleep conditions.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-H-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-H-tr">Đáng chú ý, chứng mất ngủ kinh niên hầu như không tồn tại ở các bộ tộc này, với chỉ 1,5% đến 2,5% gặp khó khăn khi ngủ mỗi năm so với 10%–30% ở các đô thị hiện đại. Việc tái tạo các yếu tố tự nhiên có thể mang lại hướng điều trị hữu hiệu.</div>
+          </div>
+          <div class="para-box" id="p1-I">
+            <span class="para-lbl">[Paragraph I]</span>
+            <span>These groups demonstrated superior physical health, healthy cardiovascular profiles, and zero instances of obesity. This suggests modern fatigue may stem more from general health deficits than deficient sleep duration itself.</span>
+            <br><button class="btn-trans" onclick="toggleT('p1-I-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p1-I-tr">Các thành viên bộ tộc đều có thể trạng rất tốt, hệ tim mạch khỏe mạnh và hoàn toàn không bị béo phì. Điều này gợi mở rằng cảm giác mệt mỏi ở người hiện đại có thể bắt nguồn từ sức khỏe tổng thể kém hơn là do thiếu thời lượng ngủ.</div>
+          </div>
+        </div>
+
+        <!-- PASSAGE 2 -->
+        <div id="p-content-2" style="display:none;">
+          <div class="passage-head">
+            <h1 class="p-title">Bristlecone Pines</h1>
+            <p class="p-sub">Loài thông nón gai - Sinh vật sống thọ nhất trên Trái Đất</p>
+          </div>
+          <div class="para-box" id="p2-A">
+            <span class="para-lbl">[Paragraph A]</span>
+            <span>At elevations above 3,000 meters in the arid Great Basin mountains of western North America, bristlecone pines thrive under conditions fatal to other vegetation. Exhibiting modest heights but considerable girths up to 11.2 meters, their extraordinary longevity averages over a millennium. The specimen named Methuselah spans over 4,700 years, recognized as Earth's oldest living individual organism, recognized in the 1950s through Edmund Schulman's dendrochronological research.</span>
+            <br><button class="btn-trans" onclick="toggleT('p2-A-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p2-A-tr">Ở độ cao trên 3.000m trên các dãy núi khô cằn thuộc Great Basin (Bắc Mỹ), thông nón gai sinh trưởng bền bỉ nơi các loài cây khác không thể tồn tại. Cây có chiều cao khiêm tốn nhưng chu vi gốc có thể đạt 11,2m, với tuổi thọ trung bình trên 1.000 năm. Cá thể Methuselah hơn 4.700 năm tuổi được công nhận là sinh vật sống thọ nhất Trái Đất, được khám phá vào thập niên 1950 nhờ nghiên cứu niên đại vân gỗ của Edmund Schulman.</div>
+          </div>
+          <div class="para-box" id="p2-B">
+            <span class="para-lbl">[Paragraph B]</span>
+            <span>Tree-ring analysis relies on climatic sensitivity: abundant precipitation produces broad rings, whereas dry seasons form narrow rings. By cross-dating matching ring sequences between living trees and dead timber, researchers establish extended chronological records of historical climate shifts.</span>
+            <br><button class="btn-trans" onclick="toggleT('p2-B-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p2-B-tr">Phương pháp phân tích vân gỗ dựa trên độ nhạy khí hậu: mưa dồi dào tạo vòng vân rộng, hạn hán tạo vòng hẹp. Bằng cách đối chiếu các mẫu vòng tương thích giữa cây sống và mẫu gỗ cổ, các nhà khoa học đã xây dựng niên biểu lịch sử khí hậu lùi xa hàng ngàn năm.</div>
+          </div>
+          <div class="para-box" id="p2-C">
+            <span class="para-lbl">[Paragraph C]</span>
+            <span>Seeking trees enduring extreme drought to track extended chronologies, Schulman surveyed dwarfed, gnarled specimens on nutrient-deficient dolomite terrain between 3,048 and 3,354 meters. Surviving with large deadwood sections supported by thin living bark strips, these harsh-climate survivors proved to be the oldest specimens.</span>
+            <br><button class="btn-trans" onclick="toggleT('p2-C-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p2-C-tr">Để tìm các mẫu cây lưu giữ biên niên sử khí hậu cổ nhất, Schulman khảo sát các cây cằn cỗi trên vùng đất đá dolomite khắc nghiệt ở độ cao trên 3.000m. Những cây sống sót kỳ diệu chỉ nhờ một dải vỏ mỏng nuôi dưỡng phần thân gỗ khô khốc hóa ra lại là những cá thể cổ xưa nhất.</div>
+          </div>
+          <div class="para-box" id="p2-D">
+            <span class="para-lbl">[Paragraph D]</span>
+            <span>Several adaptations explain this extreme endurance: needles persist for 20 to 30 years, minimizing the energy cost of growing new foliage; partial dieback of bark reduces nutritional demand during drought or lightning trauma; and exceptionally dense, resinous wood repels fungi, bacteria, and wood-boring insects completely.</span>
+            <br><button class="btn-trans" onclick="toggleT('p2-D-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p2-D-tr">Nhiều đặc điểm sinh học lý giải sức sống phi thường này: lá kim tồn tại từ 20 đến 30 năm giúp tiết kiệm năng lượng thay lá; hiện tượng chết dần một phần vỏ giúp cân bằng dinh dưỡng khi gặp sét đánh hay hạn hán; và thớ gỗ chứa hàm lượng nhựa rất cao giúp kháng hoàn toàn nấm mốc và côn trùng.</div>
+          </div>
+          <div class="para-box" id="p2-E">
+            <span class="para-lbl">[Paragraph E]</span>
+            <span>Subalpine dry atmosphere prevents fungal decomposition. Wide spacing between individual trees combined with sparse ground litter ensures lightning-ignited fires do not spread across stands. Today, tourist impact and vandalism represent the primary risk, necessitating keeping Methuselah's exact location unmarked.</span>
+            <br><button class="btn-trans" onclick="toggleT('p2-E-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p2-E-tr">Không khí khô ráo giúp gỗ không bị mục nát; khoảng cách mọc thưa thớt cùng với việc thiếu lớp thảm thực vật dưới mặt đất giúp ngăn chặn cháy rừng lây lan khi bị sét đánh. Hiện nay nguy cơ phá hoại từ du khách là mối lo lớn nhất, khiến vị trí cây Methuselah phải được giữ bí mật không gắn biển.</div>
+          </div>
+        </div>
+
+        <!-- PASSAGE 3 -->
+        <div id="p-content-3" style="display:none;">
+          <div class="passage-head">
+            <h1 class="p-title">LOSS OF RARE LANGUAGES</h1>
+            <p class="p-sub">Sự biến mất của các ngôn ngữ hiếm trên thế giới</p>
+          </div>
+          <div class="para-box" id="p3-A">
+            <span class="para-lbl">[Paragraph A - 27]</span>
+            <span>Linguist Michael Krauss warned that half of the world's 6,000 spoken tongues could vanish within a century unless coordinated worldwide preservation is implemented, projecting potential loss of 90% of global linguistic diversity. Field researchers corroborated that dozens of indigenous languages in Australia and the Americas are no longer learned by younger generations.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-A-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-A-tr">Nhà ngôn ngữ học Michael Krauss cảnh báo một nửa trong số 6.000 ngôn ngữ trên thế giới có thể biến mất trong vòng một thế kỷ nếu thiếu sự can thiệp quy mô toàn cầu. Các cuộc khảo sát thực địa xác nhận phần lớn ngôn ngữ thổ dân tại Úc và châu Mỹ không còn được truyền dạy cho thế hệ trẻ.</div>
+          </div>
+          <div class="para-box" id="p3-B">
+            <span class="para-lbl">[Paragraph B - 28]</span>
+            <span>Linguistic diversity provides critical scientific insights into human cognition, universal syntactic structures, and ancient population migrations traceable through lexical borrowings across unrelated language families.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-B-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-B-tr">Sự đa dạng ngôn ngữ mang lại giá trị khoa học to lớn, giúp tìm hiểu cơ chế tư duy của não bộ, các cấu trúc ngữ pháp phổ quát và tái hiện các cuộc thiên di cổ đại thông qua từ vựng mượn.</div>
+          </div>
+          <div class="para-box" id="p3-C">
+            <span class="para-lbl">[Paragraph C - Example vi]</span>
+            <span>Despite public alarm, coordinated institutional interventions remained minimal for decades. Charitable endowments collected insignificant financial support, with initial British and American preservation funds securing only modest donations.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-C-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-C-tr">Dù có nhiều cảnh báo, suốt một thời gian dài hầu như không có nỗ lực có tổ chức nào được triển khai thực chất. Các quỹ bảo tồn ban đầu tại Anh và Mỹ chỉ quyên góp được những khoản ngân sách vô cùng ít ỏi.</div>
+          </div>
+          <div class="para-box" id="p3-D">
+            <span class="para-lbl">[Paragraph D - 29]</span>
+            <span>Encouraging initiatives have emerged recently. Major philanthropic contributions created digital language repositories, while programs in California provided stipends for fluent tribal elders to tutor younger apprentices, extending the survival timeline of endangered vernaculars.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-D-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-D-tr">Những tín hiệu khả quan xuất hiện gần đây khi các tổ chức tài trợ lớn đầu tư hàng chục triệu đô lập kho dữ liệu số và tài trợ chương trình 'thầy truyền - trò nối' ở California, giúp kéo dài thời gian tồn tại của các ngôn ngữ bản địa.</div>
+          </div>
+          <div class="para-box" id="p3-E">
+            <span class="para-lbl">[Paragraph E - 30]</span>
+            <span>However, comprehensive documentation remains scarce for over 400 languages spoken solely by elderly survivors. Once spoken communication ceases, remaining recorded vocabularies resemble fossilized skeletons lacking organic conversational dynamics.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-E-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-E-tr">Dẫu vậy, tư liệu ghi chép vẫn vô cùng thiếu thốn đối với hơn 400 ngôn ngữ chỉ còn vài người già nắm giữ. Khi không còn được sử dụng trong đời sống, những gì còn lại chỉ như bộ xương hóa thạch thiếu vắng ngữ cảnh giao tiếp tự nhiên.</div>
+          </div>
+          <div class="para-box" id="p3-F">
+            <span class="para-lbl">[Paragraph F - 31]</span>
+            <span>Preservation strategies yield mixed results globally. While immersion 'language nests' achieved stabilization for Maori in New Zealand and Native Hawaiian, standard formulas for guaranteed revival across diverse communities remain unproven.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-F-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-F-tr">Các chiến lược bảo tồn đem lại kết quả không đồng đều: mô hình 'tổ ấm ngôn ngữ' đã giúp ổn định tiếng Maori ở New Zealand và tiếng bản địa Hawaii, nhưng chưa có công thức bảo tồn nào đảm bảo thành công chắc chắn ở mọi nơi.</div>
+          </div>
+          <div class="para-box" id="p3-G">
+            <span class="para-lbl">[Paragraph G - 32]</span>
+            <span>Language loss accelerates when speaker communities internalize perceptions of minority tongues as socially disadvantageous, prompting youth to embrace dominant national languages exclusively.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-G-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-G-tr">Sự suy tàn diễn ra nhanh hơn khi chính cộng đồng bản địa có tâm lý tự ti, coi tiếng mẹ đẻ là kém ưu thế và thế hệ trẻ chuyển hẳn sang sử dụng ngôn ngữ thống trị của xã hội.</div>
+          </div>
+          <div class="para-box" id="p3-H">
+            <span class="para-lbl">[Paragraph H - 33]</span>
+            <span>Linguists emphasize that multilingualism represents the sustainable resolution. Fostering societal acceptance so linguistic majorities permit minorities to retain and speak their native tongues serves as the essential preliminary step.</span>
+            <br><button class="btn-trans" onclick="toggleT('p3-H-tr')">🌟 Mở dịch đoạn này</button>
+            <div class="trans-box" id="p3-H-tr">Các chuyên gia khẳng định đa ngôn ngữ chính là giải pháp cốt lõi. Bước đi tiên quyết là xã hội đa số phải cởi mở và bao dung để các nhóm thiểu số được tự do sử dụng tiếng nói của mình.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CỘT BÊN PHẢI: EXERCISES TĨNH TRỰC TIẾP -->
+      <div class="pane" id="exercisePane">
+        
+        <!-- EXERCISE PASSAGE 1 (Q1 - 13) -->
+        <div id="ex-content-1">
+          <div class="sec-banner">📌 Questions 1–4: TRUE / FALSE / NOT GIVEN</div>
+
+          <!-- Q1 -->
+          <div class="q-card" id="card-1">
+            <div class="q-top">
+              <span class="q-num">1</span>
+              <span class="q-txt">Scientists studied hunter-gatherer societies because their sleep patterns are assumed to be similar to those of humans more than 10,000 years ago.</span>
+              <span id="stat-1"></span>
+            </div>
+            <select class="sel-box" id="ctrl-1" onchange="checkAnswer(1, 'TRUE', 'p1-B')">
+              <option value="">-- Chọn đáp án --</option>
+              <option value="TRUE">TRUE</option>
+              <option value="FALSE">FALSE</option>
+              <option value="NOT GIVEN">NOT GIVEN</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-1">
+              <div class="exp-main-title">
+                <span>⚡ GIẢI THÍCH CHI TIẾT</span>
+                <button class="btn-loc" onclick="locateTarget('p1-B')">🎯 Xem dẫn chứng trong bài</button>
+              </div>
+              <div class="exp-trans-quote">💬 <b>Dịch:</b> Các nhà khoa học nghiên cứu các xã hội săn bắt hái lượm vì mô hình giấc ngủ của họ được cho là tương tự như của con người hơn 10.000 năm trước.</div>
+              <div class="exp-step-title">1. Phân tích các đáp án / Cụm từ then chốt:</div>
+              <div class="options-breakdown-grid">
+                <div class="option-chip highlight"><b>TRUE</b> = Bài đọc xác nhận trùng khớp 100%</div>
+                <div class="option-chip"><b>FALSE</b> = Thông tin mâu thuẫn trực tiếp</div>
+                <div class="option-chip"><b>NOT GIVEN</b> = Không đủ dữ liệu kết luận</div>
+              </div>
+              <div class="exp-step-title">2. <span class="badge-why-correct">✅ TẠI SAO ĐÚNG?</span></div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng bài đọc:</b> <i>"these pre-industrial societies are thought to sleep the way humans did more than 10,000 years ago."</i></li>
+                <li><b>Lập luận:</b> Đoạn B khẳng định các bộ tộc này được cho là ngủ theo cách của con người hơn 10.000 năm trước.</li>
+                <li><b>Từ đồng nghĩa:</b> <span class="syn-tag">assumed to be similar = thought to sleep the way</span></li>
+              </ul>
+              <div class="exp-step-title">3. <span class="badge-why-wrong">❌ TẠI SAO SAI & BẪY CẦN TRÁNH?</span></div>
+              <ul class="exp-bullet-desc">
+                <li>Không chọn FALSE hay NOT GIVEN vì bài đọc nêu rõ mục đích nghiên cứu trùng khớp hoàn toàn với câu hỏi.</li>
+              </ul>
+              <div class="cambridge-section">
+                <div class="cambridge-title">🔊 Tra từ điển Cambridge:</div>
+                <p class="cambridge-guide-text">Bấm vào đây để nghe phát âm chuẩn giọng bản xứ:</p>
+                <div class="cambridge-btn-group">
+                  <a href="[https://dictionary.cambridge.org/vi/dictionary/english/examine](https://dictionary.cambridge.org/vi/dictionary/english/examine)" target="_blank" class="cambridge-pill-btn">🔊 Cambridge · examine</a>
+                  <a href="[https://dictionary.cambridge.org/vi/dictionary/english/pre-industrial](https://dictionary.cambridge.org/vi/dictionary/english/pre-industrial)" target="_blank" class="cambridge-pill-btn">🔊 Cambridge · pre-industrial</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="q-card" id="card-2">
+            <div class="q-top">
+              <span class="q-num">2</span>
+              <span class="q-txt">The medical devices used in the research were specially designed for humid conditions.</span>
+              <span id="stat-2"></span>
+            </div>
+            <select class="sel-box" id="ctrl-2" onchange="checkAnswer(2, 'NOT GIVEN', 'p1-B')">
+              <option value="">-- Chọn đáp án --</option>
+              <option value="TRUE">TRUE</option>
+              <option value="FALSE">FALSE</option>
+              <option value="NOT GIVEN">NOT GIVEN</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-2">
+              <div class="exp-main-title">
+                <span>⚡ GIẢI THÍCH CHI TIẾT</span>
+                <button class="btn-loc" onclick="locateTarget('p1-B')">🎯 Xem dẫn chứng trong bài</button>
+              </div>
+              <div class="exp-trans-quote">💬 <b>Dịch:</b> Các thiết bị y tế được sử dụng trong nghiên cứu được thiết kế đặc biệt cho điều kiện ẩm ướt.</div>
+              <div class="exp-step-title">1. Phân tích các đáp án / Cụm từ then chốt:</div>
+              <div class="options-breakdown-grid">
+                <div class="option-chip"><b>TRUE</b> = Khẳng định thiết kế chuyên biệt</div>
+                <div class="option-chip"><b>FALSE</b> = Thiết bị không dùng cho độ ẩm</div>
+                <div class="option-chip highlight"><b>NOT GIVEN</b> = Không đề cập mục đích thiết kế</div>
+              </div>
+              <div class="exp-step-title">2. <span class="badge-why-correct">✅ TẠI SAO ĐÚNG?</span></div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng bài đọc:</b> <i>"Traveling to where they lived, often in humid, remote locations, researchers used medical devices to record the sleeping habits..."</i></li>
+                <li><b>Lập luận:</b> Bài đọc chỉ nói nơi họ ở có khí hậu ẩm ướt và hẻo lánh, KHÔNG hề nói thiết bị y tế có được thiết kế đặc biệt (specially designed) cho độ ẩm hay không.</li>
+              </ul>
+              <div class="exp-step-title">3. <span class="badge-why-wrong">❌ TẠI SAO SAI & BẪY CẦN TRÁNH?</span></div>
+              <ul class="exp-bullet-desc">
+                <li>Bẫy suy diễn: Thấy có từ "humid" và "medical devices" trong cùng một câu nhưng mối liên hệ thiết kế không hề tồn tại trong bài.</li>
+              </ul>
+              <div class="cambridge-section">
+                <div class="cambridge-title">🔊 Tra từ điển Cambridge:</div>
+                <div class="cambridge-btn-group">
+                  <a href="[https://dictionary.cambridge.org/vi/dictionary/english/humid](https://dictionary.cambridge.org/vi/dictionary/english/humid)" target="_blank" class="cambridge-pill-btn">🔊 Cambridge · humid</a>
+                  <a href="[https://dictionary.cambridge.org/vi/dictionary/english/device](https://dictionary.cambridge.org/vi/dictionary/english/device)" target="_blank" class="cambridge-pill-btn">🔊 Cambridge · device</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="q-card" id="card-3">
+            <div class="q-top">
+              <span class="q-num">3</span>
+              <span class="q-txt">Researchers found that tribespeople stayed longer in bed than inhabitants of industrialised regions.</span>
+              <span id="stat-3"></span>
+            </div>
+            <select class="sel-box" id="ctrl-3" onchange="checkAnswer(3, 'FALSE', 'p1-C')">
+              <option value="">-- Chọn đáp án --</option>
+              <option value="TRUE">TRUE</option>
+              <option value="FALSE">FALSE</option>
+              <option value="NOT GIVEN">NOT GIVEN</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-3">
+              <div class="exp-main-title">
+                <span>⚡ GIẢI THÍCH CHI TIẾT</span>
+                <button class="btn-loc" onclick="locateTarget('p1-C')">🎯 Xem dẫn chứng trong bài</button>
+              </div>
+              <div class="exp-trans-quote">💬 <b>Dịch:</b> Các nhà nghiên cứu phát hiện người bộ tộc nằm trên giường lâu hơn cư dân ở các vùng công nghiệp hóa.</div>
+              <div class="exp-step-title">1. Phân tích các đáp án / Cụm từ then chốt:</div>
+              <div class="options-breakdown-grid">
+                <div class="option-chip"><b>TRUE</b> = Nằm lâu hơn</div>
+                <div class="option-chip highlight"><b>FALSE</b> = Thời lượng tương đương, không lâu hơn</div>
+                <div class="option-chip"><b>NOT GIVEN</b> = Không so sánh</div>
+              </div>
+              <div class="exp-step-title">2. <span class="badge-why-correct">✅ TẠI SAO ĐÚNG?</span></div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng bài đọc:</b> <i>"This adds up to a sleep efficiency that is very similar to today's industrial populations."</i></li>
+                <li><b>Lập luận:</b> Hiệu suất và thời gian nằm trên giường rất tương đồng (very similar) với người hiện đại, đối lập trực tiếp với nhận định "lâu hơn" (longer).</li>
+              </ul>
+              <div class="exp-step-title">3. <span class="badge-why-wrong">❌ TẠI SAO SAI & BẪY CẦN TRÁNH?</span></div>
+              <ul class="exp-bullet-desc">
+                <li>Bẫy mâu thuẫn: "very similar" mâu thuẫn với "longer in bed".</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="q-card" id="card-4">
+            <div class="q-top">
+              <span class="q-num">4</span>
+              <span class="q-txt">Jerome Siegel believes that environment and culture have little effect on sleep patterns.</span>
+              <span id="stat-4"></span>
+            </div>
+            <select class="sel-box" id="ctrl-4" onchange="checkAnswer(4, 'TRUE', 'p1-D')">
+              <option value="">-- Chọn đáp án --</option>
+              <option value="TRUE">TRUE</option>
+              <option value="FALSE">FALSE</option>
+              <option value="NOT GIVEN">NOT GIVEN</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-4">
+              <div class="exp-main-title">
+                <span>⚡ GIẢI THÍCH CHI TIẾT</span>
+                <button class="btn-loc" onclick="locateTarget('p1-D')">🎯 Xem dẫn chứng trong bài</button>
+              </div>
+              <div class="exp-trans-quote">💬 <b>Dịch:</b> Jerome Siegel tin rằng môi trường và văn hóa có rất ít ảnh hưởng đến mô hình giấc ngủ.</div>
+              <div class="exp-step-title">1. Phân tích các đáp án / Cụm từ then chốt:</div>
+              <div class="options-breakdown-grid">
+                <div class="option-chip highlight"><b>TRUE</b> = Trùng khớp hoàn toàn</div>
+                <div class="option-chip"><b>FALSE</b> = Môi trường có ảnh hưởng quyết định</div>
+                <div class="option-chip"><b>NOT GIVEN</b> = Không nêu quan điểm</div>
+              </div>
+              <div class="exp-step-title">2. <span class="badge-why-correct">✅ TẠI SAO ĐÚNG?</span></div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng bài đọc:</b> <i>"evidence suggests sleep habits may not be environmental or cultural, but central to the physical makeup of humans."</i></li>
+                <li><b>Lập luận:</b> Thói quen ngủ là do bản chất sinh học tự nhiên chứ không phải do môi trường hay văn hóa chi phối.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sec-banner">📌 Questions 5–13: Complete the notes (ONE WORD ONLY)</div>
+
+          <!-- Q5 -->
+          <div class="q-card" id="card-5">
+            <div class="q-top">
+              <span class="q-num">5</span>
+              <span class="q-txt">scientists have recorded an afternoon drop in 5 ......................</span>
+              <span id="stat-5"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-5" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(5, ['energy'], 'p1-D')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-5">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-D')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> energy (năng lượng)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"people's energy often falls in the mid-afternoon."</i></li>
+                <li><b>Từ đồng nghĩa:</b> <span class="syn-tag">drop in = falls in</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="q-card" id="card-6">
+            <div class="q-top">
+              <span class="q-num">6</span>
+              <span class="q-txt">studies of hunter-gatherer societies show that napping was rare and occurred more often during the 6 ......................</span>
+              <span id="stat-6"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-6" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(6, ['summer'], 'p1-E')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-6">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> summer (mùa hè)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"naps may have occurred on up to 7 percent of winter days and 22 percent of summer days."</i> (22% ngày mùa hè > 7% ngày mùa đông).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="q-card" id="card-7">
+            <div class="q-top">
+              <span class="q-num">7</span>
+              <span class="q-txt">the devices may not have detected 7 ...................... naps</span>
+              <span id="stat-7"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-7" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(7, ['short'], 'p1-E')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-7">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> short (ngắn)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"devices were only good at detecting longer naps, so it is possible that some took naps that were short..."</i></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="q-card" id="card-8">
+            <div class="q-top">
+              <span class="q-num">8</span>
+              <span class="q-txt">the tribespeople went to sleep several hours after sunset even with 8 ......................</span>
+              <span id="stat-8"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-8" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(8, ['fires'], 'p1-F')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-8">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-F')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> fires (đốt lửa)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"All three tribes had fires going, but the light itself was much lower than you might get from a light bulb."</i></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="q-card" id="card-9">
+            <div class="q-top">
+              <span class="q-num">9</span>
+              <span class="q-txt">tribes people usually woke up around 9 ......................</span>
+              <span id="stat-9"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-9" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(9, ['sunrise'], 'p1-F')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-9">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-F')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> sunrise (bình minh / mặt trời mọc)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"have a tendency to wake up anywhere between an hour before and an hour after sunrise."</i></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q10 -->
+          <div class="q-card" id="card-10">
+            <div class="q-top">
+              <span class="q-num">10</span>
+              <span class="q-txt">scientists found that 10 ...................... had almost as much influence on sleep patterns as light</span>
+              <span id="stat-10"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-10" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(10, ['temperature'], 'p1-G')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-10">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-G')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> temperature (nhiệt độ)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"significance of temperature. They found that it also played a big role, though it was somewhat less important than light..."</i></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q11 -->
+          <div class="q-card" id="card-11">
+            <div class="q-top">
+              <span class="q-num">11</span>
+              <span class="q-txt">11 ...................... is something that very few of the tribespeople suffered from</span>
+              <span id="stat-11"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-11" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(11, ['sleeplessness'], 'p1-H')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-11">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-H')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> sleeplessness (chứng mất ngủ)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"Importantly, almost none of them were troubled by sleeplessness."</i></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q12 -->
+          <div class="q-card" id="card-12">
+            <div class="q-top">
+              <span class="q-num">12</span>
+              <span class="q-txt">tribespeople had better fitness than industrialised populations and were not 12 ......................</span>
+              <span id="stat-12"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-12" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(12, ['overweight'], 'p1-I')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-12">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-I')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> overweight (thừa cân)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"Not a single one is overweight, indicating their overall higher levels of physical fitness."</i></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q13 -->
+          <div class="q-card" id="card-13">
+            <div class="q-top">
+              <span class="q-num">13</span>
+              <span class="q-txt">tribespeople also had stronger 13 ......................</span>
+              <span id="stat-13"></span>
+            </div>
+            <div class="fill-row">
+              <input type="text" class="inp-box" id="ctrl-13" placeholder="Điền 1 từ...">
+              <button class="btn-chk" onclick="checkFill(13, ['hearts'], 'p1-I')">Check</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-13">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p1-I')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> hearts (trái tim)</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"They also tended to have healthier hearts."</i> (healthier = stronger).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXERCISE PASSAGE 2 (Q14 - 26) -->
+        <div id="ex-content-2" style="display:none;">
+          <div class="sec-banner">📌 Questions 14–17: Which paragraph contains the following information? (A–E)</div>
+
+          <!-- Q14 -->
+          <div class="q-card" id="card-14">
+            <div class="q-top"><span class="q-num">14</span><span class="q-txt">an explanation of differences in ring patterns</span><span id="stat-14"></span></div>
+            <select class="sel-box" id="ctrl-14" onchange="checkAnswer(14, 'B', 'p2-B')">
+              <option value="">-- Chọn đoạn văn --</option>
+              <option value="A">Paragraph A</option><option value="B">Paragraph B</option><option value="C">Paragraph C</option><option value="D">Paragraph D</option><option value="E">Paragraph E</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-14">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-B')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> Paragraph B</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"wide rings of certain species... produced during wet years and, inversely, narrow rings during dry seasons..."</i> (Giải thích cơ chế tạo vân gỗ rộng và hẹp).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q15 -->
+          <div class="q-card" id="card-15">
+            <div class="q-top"><span class="q-num">15</span><span class="q-txt">mention of a human danger to bristlecone pines</span><span id="stat-15"></span></div>
+            <select class="sel-box" id="ctrl-15" onchange="checkAnswer(15, 'E', 'p2-E')">
+              <option value="">-- Chọn đoạn văn --</option>
+              <option value="A">Paragraph A</option><option value="B">Paragraph B</option><option value="C">Paragraph C</option><option value="D">Paragraph D</option><option value="E">Paragraph E</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-15">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> Paragraph E</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"The current threat is from all the people who come to visit them... threat of vandalism."</i> (Nguy cơ phá hoại từ du khách).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q16 -->
+          <div class="q-card" id="card-16">
+            <div class="q-top"><span class="q-num">16</span><span class="q-txt">an account of research conducted on bristlecone pines</span><span id="stat-16"></span></div>
+            <select class="sel-box" id="ctrl-16" onchange="checkAnswer(16, 'C', 'p2-C')">
+              <option value="">-- Chọn đoạn văn --</option>
+              <option value="A">Paragraph A</option><option value="B">Paragraph B</option><option value="C">Paragraph C</option><option value="D">Paragraph D</option><option value="E">Paragraph E</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-16">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-C')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> Paragraph C</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"During 1954 and 1955, an extensive survey of bristlecone stands... was carried out by Schulman..."</i> (Tường thuật nghiên cứu khảo sát của Schulman).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q17 -->
+          <div class="q-card" id="card-17">
+            <div class="q-top"><span class="q-num">17</span><span class="q-txt">an advantage of the bristlecone pines' habitat</span><span id="stat-17"></span></div>
+            <select class="sel-box" id="ctrl-17" onchange="checkAnswer(17, 'E', 'p2-E')">
+              <option value="">-- Chọn đoạn văn --</option>
+              <option value="A">Paragraph A</option><option value="B">Paragraph B</option><option value="C">Paragraph C</option><option value="D">Paragraph D</option><option value="E">Paragraph E</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-17">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> Paragraph E</div>
+              <ul class="exp-bullet-desc">
+                <li><b>Dẫn chứng:</b> <i>"The dry air common in the subalpine region helps preserve the trees from rotting... fire does not spread to surrounding trees."</i> (Không khí khô chống mục nát, thưa thớt chống cháy lan).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sec-banner">📌 Questions 18–20: Choose the correct answer (A, B, C, or D)</div>
+
+          <!-- Q18 -->
+          <div class="q-card" id="card-18">
+            <div class="q-top"><span class="q-num">18</span><span class="q-txt">According to the writer, the most interesting fact about bristlecone pines is their</span><span id="stat-18"></span></div>
+            <div class="mc-grid">
+              <button class="mc-opt" onclick="checkMC(18, 'A', 'D', 'p2-A')">A. habitat.</button>
+              <button class="mc-opt" onclick="checkMC(18, 'B', 'D', 'p2-A')">B. height.</button>
+              <button class="mc-opt" onclick="checkMC(18, 'C', 'D', 'p2-A')">C. width.</button>
+              <button class="mc-opt" onclick="checkMC(18, 'D', 'D', 'p2-A')">D. age.</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-18">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-A')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> D. age (tuổi thọ)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"What makes bristlecone pines truly remarkable is their longevity: their average age is over 1,000 years..."</i> (longevity = age).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q19 -->
+          <div class="q-card" id="card-19">
+            <div class="q-top"><span class="q-num">19</span><span class="q-txt">A pattern of narrow rings is caused by</span><span id="stat-19"></span></div>
+            <div class="mc-grid">
+              <button class="mc-opt" onclick="checkMC(19, 'A', 'B', 'p2-B')">A. alternating rainy and dry seasons.</button>
+              <button class="mc-opt" onclick="checkMC(19, 'B', 'B', 'p2-B')">B. a lack of rain.</button>
+              <button class="mc-opt" onclick="checkMC(19, 'C', 'B', 'p2-B')">C. restricted growth in some trees.</button>
+              <button class="mc-opt" onclick="checkMC(19, 'D', 'B', 'p2-B')">D. high altitude.</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-19">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-B')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> B. a lack of rain (thiếu mưa / khô hạn)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"...and, inversely, narrow rings during dry seasons."</i> (dry seasons = a lack of rain).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q20 -->
+          <div class="q-card" id="card-20">
+            <div class="q-top"><span class="q-num">20</span><span class="q-txt">Schulman chose to study trees growing at high levels because they were</span><span id="stat-20"></span></div>
+            <div class="mc-grid">
+              <button class="mc-opt" onclick="checkMC(20, 'A', 'C', 'p2-C')">A. shorter than similar trees.</button>
+              <button class="mc-opt" onclick="checkMC(20, 'B', 'C', 'p2-C')">B. growing in unusual shapes.</button>
+              <button class="mc-opt" onclick="checkMC(20, 'C', 'C', 'p2-C')">C. much older than other trees.</button>
+              <button class="mc-opt" onclick="checkMC(20, 'D', 'C', 'p2-C')">D. the only surviving plants.</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-20">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-C')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> C. much older than other trees (già hơn nhiều)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"In his search for older trees that would provide more extensive chronologies, Schulman learned that certain species in upper-forest zones..."</i></li></ul>
+            </div>
+          </div>
+
+          <div class="sec-banner">📌 Questions 21–26: Complete the notes (NO MORE THAN TWO WORDS)</div>
+
+          <!-- Q21 -->
+          <div class="q-card" id="card-21">
+            <div class="q-top"><span class="q-num">21</span><span class="q-txt">making new needles requires 21 ......................</span><span id="stat-21"></span></div>
+            <div class="fill-row"><input type="text" class="inp-box" id="ctrl-21" placeholder="Điền tối đa 2 từ..."><button class="btn-chk" onclick="checkFill(21, ['little energy'], 'p2-D')">Check</button></div>
+            <div class="detailed-exp-card" id="exp-21">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-D')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> little energy</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"...adding new foliage to that already on the tree takes little energy."</i></li></ul>
+            </div>
+          </div>
+
+          <!-- Q22 -->
+          <div class="q-card" id="card-22">
+            <div class="q-top"><span class="q-num">22</span><span class="q-txt">trees damaged by weather or fire can exist with only small areas of 22 ......................</span><span id="stat-22"></span></div>
+            <div class="fill-row"><input type="text" class="inp-box" id="ctrl-22" placeholder="Điền tối đa 2 từ..."><button class="btn-chk" onclick="checkFill(22, ['living bark'], 'p2-D')">Check</button></div>
+            <div class="detailed-exp-card" id="exp-22">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-D')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> living bark</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"...yet has only a 25 cm strip of living bark to support it."</i></li></ul>
+            </div>
+          </div>
+
+          <!-- Q23 -->
+          <div class="q-card" id="card-23">
+            <div class="q-top"><span class="q-num">23</span><span class="q-txt">bristlecone wood is very 23 ......................</span><span id="stat-23"></span></div>
+            <div class="fill-row"><input type="text" class="inp-box" id="ctrl-23" placeholder="Điền tối đa 2 từ..."><button class="btn-chk" onclick="checkFill(23, ['resinous'], 'p2-D')">Check</button></div>
+            <div class="detailed-exp-card" id="exp-23">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-D')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> resinous (nhiều nhựa)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"...due to their highly resinous wood."</i></li></ul>
+            </div>
+          </div>
+
+          <!-- Q24 -->
+          <div class="q-card" id="card-24">
+            <div class="q-top"><span class="q-num">24</span><span class="q-txt">trees don't decay because of the 24 ......................</span><span id="stat-24"></span></div>
+            <div class="fill-row"><input type="text" class="inp-box" id="ctrl-24" placeholder="Điền tối đa 2 từ..."><button class="btn-chk" onclick="checkFill(24, ['dry air'], 'p2-E')">Check</button></div>
+            <div class="detailed-exp-card" id="exp-24">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> dry air (không khí khô)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"The dry air common in the subalpine region helps preserve the trees from rotting."</i> (decay = rot).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q25 -->
+          <div class="q-card" id="card-25">
+            <div class="q-top"><span class="q-num">25</span><span class="q-txt">fires don't spread easily because of the 25 ...................... between trees</span><span id="stat-25"></span></div>
+            <div class="fill-row"><input type="text" class="inp-box" id="ctrl-25" placeholder="Điền tối đa 2 từ..."><button class="btn-chk" onclick="checkFill(25, ['space', 'distance'], 'p2-E')">Check</button></div>
+            <div class="detailed-exp-card" id="exp-25">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> space / distance (khoảng cách)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"with considerable space between each tree... This distance in between..."</i></li></ul>
+            </div>
+          </div>
+
+          <!-- Q26 -->
+          <div class="q-card" id="card-26">
+            <div class="q-top"><span class="q-num">26</span><span class="q-txt">and absence of 26 ......................</span><span id="stat-26"></span></div>
+            <div class="fill-row"><input type="text" class="inp-box" id="ctrl-26" placeholder="Điền tối đa 2 từ..."><button class="btn-chk" onclick="checkFill(26, ['ground cover', 'leaf litter'], 'p2-E')">Check</button></div>
+            <div class="detailed-exp-card" id="exp-26">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p2-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> ground cover / leaf litter</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"...combined with the lack of ground cover, ensures that... fire does not spread..."</i></li></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXERCISE PASSAGE 3 (Q27 - 40) -->
+        <div id="ex-content-3" style="display:none;">
+          <div class="sec-banner">📌 Questions 27–33: Choose the correct heading for paragraphs A–H (i–xi)</div>
+
+          <!-- Q27 -->
+          <div class="q-card" id="card-27">
+            <div class="q-top"><span class="q-num">27</span><span class="q-txt">Paragraph A</span><span id="stat-27"></span></div>
+            <select class="sel-box" id="ctrl-27" onchange="checkAnswer(27, 'iv', 'p3-A')">
+              <option value="">-- Chọn tiêu đề (Heading) --</option>
+              <option value="i">i) Inadequate data</option>
+              <option value="ii">ii) Consensus on an Initial recommendation...</option>
+              <option value="iii">iii) Positive gains in protection efforts</option>
+              <option value="iv">iv) Minimum requirement for saving a language</option>
+              <option value="v">v) Potential threat to minority languages</option>
+              <option value="vi">vi) A period when there was an absence of real efforts made</option>
+              <option value="vii">vii) Uncertainty about the success of native language programs</option>
+              <option value="viii">viii) Lack of confidence in young speakers as a negative factor</option>
+              <option value="ix">ix) Practice in several developing countries</option>
+              <option value="x">x) Value of minority languages to linguists</option>
+              <option value="xi">xi) Government participation in language field</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-27">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-A')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> iv) Minimum requirement for saving a language</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"Unless scientists and community leaders directed a worldwide effort... nine tenths of linguistic diversity would probably be doomed..."</i> (Yêu cầu tối thiểu là một nỗ lực toàn cầu).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q28 -->
+          <div class="q-card" id="card-28">
+            <div class="q-top"><span class="q-num">28</span><span class="q-txt">Paragraph B</span><span id="stat-28"></span></div>
+            <select class="sel-box" id="ctrl-28" onchange="checkAnswer(28, 'x', 'p3-B')">
+              <option value="">-- Chọn tiêu đề (Heading) --</option>
+              <option value="i">i) Inadequate data</option>
+              <option value="ii">ii) Consensus on an Initial recommendation...</option>
+              <option value="iii">iii) Positive gains in protection efforts</option>
+              <option value="iv">iv) Minimum requirement for saving a language</option>
+              <option value="v">v) Potential threat to minority languages</option>
+              <option value="vii">vii) Uncertainty about the success of native language programs</option>
+              <option value="x">x) Value of minority languages to linguists</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-28">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-B')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> x) Value of minority languages to linguists</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"scientific self-interest; some of the most basic questions in linguistics have to do with limits of human speech..."</i> (Giá trị ngôn ngữ hiếm đối với các nhà khoa học).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q29 -->
+          <div class="q-card" id="card-29">
+            <div class="q-top"><span class="q-num">29</span><span class="q-txt">Paragraph D</span><span id="stat-29"></span></div>
+            <select class="sel-box" id="ctrl-29" onchange="checkAnswer(29, 'iii', 'p3-D')">
+              <option value="">-- Chọn tiêu đề (Heading) --</option>
+              <option value="i">i) Inadequate data</option>
+              <option value="iii">iii) Positive gains in protection efforts</option>
+              <option value="v">v) Potential threat to minority languages</option>
+              <option value="vii">vii) Uncertainty about the success of native language programs</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-29">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-D')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> iii) Positive gains in protection efforts</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"encouraging signs that the field has turned a corner... grants totaling more than 52 million... multimedia archive..."</i> (Các bước tiến tích cực trong bảo tồn).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q30 -->
+          <div class="q-card" id="card-30">
+            <div class="q-top"><span class="q-num">30</span><span class="q-txt">Paragraph E</span><span id="stat-30"></span></div>
+            <select class="sel-box" id="ctrl-30" onchange="checkAnswer(30, 'i', 'p3-E')">
+              <option value="">-- Chọn tiêu đề (Heading) --</option>
+              <option value="i">i) Inadequate data</option>
+              <option value="v">v) Potential threat to minority languages</option>
+              <option value="vii">vii) Uncertainty about the success of native language programs</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-30">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-E')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> i) Inadequate data</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"little or no record of their grammar, vocabulary, pronunciation... fossil skeleton..."</i> (Dữ liệu nghèo nàn, thiếu thốn).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q31 -->
+          <div class="q-card" id="card-31">
+            <div class="q-top"><span class="q-num">31</span><span class="q-txt">Paragraph F</span><span id="stat-31"></span></div>
+            <select class="sel-box" id="ctrl-31" onchange="checkAnswer(31, 'vii', 'p3-F')">
+              <option value="">-- Chọn tiêu đề (Heading) --</option>
+              <option value="ii">ii) Consensus on an Initial recommendation...</option>
+              <option value="v">v) Potential threat to minority languages</option>
+              <option value="vii">vii) Uncertainty about the success of native language programs</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-31">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-F')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> vii) Uncertainty about the success of native language programs</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"succeeded in some places but failed in others, and there seems to be no way to predict with certainty what will work where..."</i> (Không chắc chắn về thành công).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q32 -->
+          <div class="q-card" id="card-32">
+            <div class="q-top"><span class="q-num">32</span><span class="q-txt">Paragraph G</span><span id="stat-32"></span></div>
+            <select class="sel-box" id="ctrl-32" onchange="checkAnswer(32, 'v', 'p3-G')">
+              <option value="">-- Chọn tiêu đề (Heading) --</option>
+              <option value="ii">ii) Consensus on an Initial recommendation...</option>
+              <option value="v">v) Potential threat to minority languages</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-32">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-G')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> v) Potential threat to minority languages</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"demise of a language is that speakers begin to have collective doubts... regarding own language as inferior..."</i> (Nguy cơ từ việc tự ti và từ bỏ ngôn ngữ).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q33 -->
+          <div class="q-card" id="card-33">
+            <div class="q-top"><span class="q-num">33</span><span class="q-txt">Paragraph H</span><span id="stat-33"></span></div>
+            <select class="sel-box" id="ctrl-33" onchange="checkAnswer(33, 'ii', 'p3-H')">
+              <option value="">-- Chọn tiêu đề (Heading) --</option>
+              <option value="ii">ii) Consensus on an Initial recommendation for saving dying out languages</option>
+              <option value="viii">viii) Lack of confidence in young speakers as a negative factor</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-33">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-H')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> ii) Consensus on an Initial recommendation...</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"Linguists agree that ultimately, the answer is multilingualism... The first step in saving dying languages is to persuade..."</i> (Đồng thuận về khuyến nghị ban đầu: đa ngôn ngữ).</li></ul>
+            </div>
+          </div>
+
+          <div class="sec-banner">📌 Questions 34–38: Match the people (A–F) with opinions or deeds</div>
+
+          <!-- Q34 -->
+          <div class="q-card" id="card-34">
+            <div class="q-top"><span class="q-num">34</span><span class="q-txt">Reported about the success of a language conservation practice in Hawaii</span><span id="stat-34"></span></div>
+            <select class="sel-box" id="ctrl-34" onchange="checkAnswer(34, 'C', 'p3-F')">
+              <option value="">-- Chọn chuyên gia --</option>
+              <option value="A">A (Nicholas Ostler)</option><option value="B">B (Michael Krauss)</option><option value="C">C (Joseph E. Grimes)</option><option value="D">D (Sarah G. Thomason)</option><option value="E">E (Keneth L. Hale)</option><option value="F">F (Douglas H. Whalen)</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-34">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-F')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> C (Joseph E. Grimes)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"reports Joseph E. Grimes of SIL International, who is working on Oahu..."</i> (Báo cáo về thành công ở Hawaii).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q35 -->
+          <div class="q-card" id="card-35">
+            <div class="q-top"><span class="q-num">35</span><span class="q-txt">Predicted that many languages would disappear soon</span><span id="stat-35"></span></div>
+            <select class="sel-box" id="ctrl-35" onchange="checkAnswer(35, 'B', 'p3-A')">
+              <option value="">-- Chọn chuyên gia --</option>
+              <option value="A">A (Nicholas Ostler)</option><option value="B">B (Michael Krauss)</option><option value="C">C (Joseph E. Grimes)</option><option value="D">D (Sarah G. Thomason)</option><option value="E">E (Keneth L. Hale)</option><option value="F">F (Douglas H. Whalen)</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-35">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-A')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> B (Michael Krauss)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"Michael Krauss sent a shudder through the discipline with his prediction that half the 6,000 languages would cease to be uttered..."</i></li></ul>
+            </div>
+          </div>
+
+          <!-- Q36 -->
+          <div class="q-card" id="card-36">
+            <div class="q-top"><span class="q-num">36</span><span class="q-txt">Experienced loss of languages he had worked on personally</span><span id="stat-36"></span></div>
+            <select class="sel-box" id="ctrl-36" onchange="checkAnswer(36, 'E', 'p3-A')">
+              <option value="">-- Chọn chuyên gia --</option>
+              <option value="A">A (Nicholas Ostler)</option><option value="B">B (Michael Krauss)</option><option value="C">C (Joseph E. Grimes)</option><option value="D">D (Sarah G. Thomason)</option><option value="E">E (Keneth L. Hale)</option><option value="F">F (Douglas H. Whalen)</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-36">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-A')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> E (Keneth L. Hale)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"Keneth L. Hale noted... that eight languages on which he had done fieldwork had since passed into extinction."</i></li></ul>
+            </div>
+          </div>
+
+          <!-- Q37 -->
+          <div class="q-card" id="card-37">
+            <div class="q-top"><span class="q-num">37</span><span class="q-txt">Raised language funds in England</span><span id="stat-37"></span></div>
+            <select class="sel-box" id="ctrl-37" onchange="checkAnswer(37, 'A', 'p3-C')">
+              <option value="">-- Chọn chuyên gia --</option>
+              <option value="A">A (Nicholas Ostler)</option><option value="B">B (Michael Krauss)</option><option value="C">C (Joseph E. Grimes)</option><option value="D">D (Sarah G. Thomason)</option><option value="E">E (Keneth L. Hale)</option><option value="F">F (Douglas H. Whalen)</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-37">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-C')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> A (Nicholas Ostler)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"A similar foundation in England, directed by Nicholas Ostler, has raised just $8,000..."</i></li></ul>
+            </div>
+          </div>
+
+          <!-- Q38 -->
+          <div class="q-card" id="card-38">
+            <div class="q-top"><span class="q-num">38</span><span class="q-txt">Not enough effort on saving languages until recent work</span><span id="stat-38"></span></div>
+            <select class="sel-box" id="ctrl-38" onchange="checkAnswer(38, 'D', 'p3-C')">
+              <option value="">-- Chọn chuyên gia --</option>
+              <option value="A">A (Nicholas Ostler)</option><option value="B">B (Michael Krauss)</option><option value="C">C (Joseph E. Grimes)</option><option value="D">D (Sarah G. Thomason)</option><option value="E">E (Keneth L. Hale)</option><option value="F">F (Douglas H. Whalen)</option>
+            </select>
+            <div class="detailed-exp-card" id="exp-38">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-C')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> D (Sarah G. Thomason)</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"says Sarah G Thomason... But there isn't any such effort organized in the profession. It is only recently that it has become fashionable..."</i></li></ul>
+            </div>
+          </div>
+
+          <div class="sec-banner">📌 Questions 39–40: Choose the correct answer (A, B, C, or D)</div>
+
+          <!-- Q39 -->
+          <div class="q-card" id="card-39">
+            <div class="q-top"><span class="q-num">39</span><span class="q-txt">What is the real result of the master-apprentice program sponsored by The Ford Foundation?</span><span id="stat-39"></span></div>
+            <div class="mc-grid">
+              <button class="mc-opt" onclick="checkMC(39, 'A', 'C', 'p3-D')">A. Teach children how to speak native languages</button>
+              <button class="mc-opt" onclick="checkMC(39, 'B', 'C', 'p3-D')">B. Revive some endangered languages in California</button>
+              <button class="mc-opt" onclick="checkMC(39, 'C', 'C', 'p3-D')">C. Postpone the dying date for some endangered languages</button>
+              <button class="mc-opt" onclick="checkMC(39, 'D', 'C', 'p3-D')">D. Increase communication between students</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-39">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-D')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> C. Postpone the dying date for some endangered languages</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"'But at least we prolong the survival of the language.' That will give linguists more time..."</i> (prolong the survival = Postpone the dying date).</li></ul>
+            </div>
+          </div>
+
+          <!-- Q40 -->
+          <div class="q-card" id="card-40">
+            <div class="q-top"><span class="q-num">40</span><span class="q-txt">What should majority language speakers do according to the last paragraph?</span><span id="stat-40"></span></div>
+            <div class="mc-grid">
+              <button class="mc-opt" onclick="checkMC(40, 'A', 'D', 'p3-H')">A. They should teach their children endangered languages</button>
+              <button class="mc-opt" onclick="checkMC(40, 'B', 'D', 'p3-H')">B. They should learn at least four languages</button>
+              <button class="mc-opt" onclick="checkMC(40, 'C', 'D', 'p3-H')">C. They should show their loyalty to a dying language</button>
+              <button class="mc-opt" onclick="checkMC(40, 'D', 'D', 'p3-H')">D. They should be more tolerant of minority language speakers</button>
+            </div>
+            <div class="detailed-exp-card" id="exp-40">
+              <div class="exp-main-title"><span>⚡ GIẢI THÍCH CHI TIẾT</span><button class="btn-loc" onclick="locateTarget('p3-H')">🎯 Dẫn chứng</button></div>
+              <div class="exp-trans-quote">💬 <b>Đáp án:</b> D. They should be more tolerant of minority language speakers</div>
+              <ul class="exp-bullet-desc"><li><b>Dẫn chứng:</b> <i>"The first step in saving dying languages is to persuade the world's majorities to allow the minorities among them to speak with their own voices."</i> (Bao dung hơn và cho phép người thiểu số cất tiếng nói).</li></ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUBMIT BAR -->
+    <div style="text-align:center; margin-top:10px;">
+      <button class="btn-timer" style="padding: 12px 36px; font-size: 15px; border-radius: 50px;" onclick="showResult()">🏁 NỘP BÀI THI & XEM TỔNG KẾT</button>
+    </div>
+
+    <!-- 5. FOOTER BANNER -->
+    <footer class="footer-promo">
+      <div class="circle-icon">📞</div>
+      <div>
+        <div style="font-size: 15px; font-weight: 900;">
+          PH HS đăng kí học tiếng anh Khối 1 đến 12, IELTS vui lòng liên hệ Ms Lê Hằng English —
+          <span class="pill-badge">💬 zalo 0584 965 348</span>
+        </div>
+        <div style="font-size: 12.5px; font-weight: 700; opacity: 0.95; margin-top: 3px;">
+          📍 Online + Offline tại Linh Đàm · Hệ thống web bài tập độc lạ, chấm tự động, giải chi tiết siêu đẹp!
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- POPUP MODAL RESULT -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal-box">
+      <div style="font-size: 50px;">🎉</div>
+      <h2 style="font-size: 22px; font-weight: 900; margin-top: 6px;">KẾT QUẢ BÀI THI</h2>
+      <div class="timer-txt" style="font-size: 40px; margin: 10px 0;" id="modalScoreTxt">0 / 40</div>
+      <p style="font-size: 14px; font-weight: 700; color: #475569; line-height: 1.45;" id="modalMsg"></p>
+      <button class="btn-timer" style="margin-top:14px; padding:10px 24px; border-radius:30px;" onclick="document.getElementById('modalBg').style.display='none'">Xem lại bài thi & Dẫn chứng</button>
+    </div>
+  </div>
+
+  <script>
+    const userState = {};
+    const totalQ = 40;
+
+    let actx = null;
+    function playAudio(ok) {
+      try {
+        if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+        if (actx.state === 'suspended') actx.resume();
+        const o = actx.createOscillator();
+        const g = actx.createGain();
+        o.connect(g); g.connect(actx.destination);
+        if (ok) {
+          o.type = 'sine'; o.frequency.setValueAtTime(587, actx.currentTime);
+          g.gain.setValueAtTime(0.15, actx.currentTime);
+          g.exponentialRampToValueAtTime(0.001, actx.currentTime + 0.6);
+          o.start(); o.stop(actx.currentTime + 0.6);
+        } else {
+          o.type = 'sawtooth'; o.frequency.setValueAtTime(160, actx.currentTime);
+          g.gain.setValueAtTime(0.15, actx.currentTime);
+          g.exponentialRampToValueAtTime(0.001, actx.currentTime + 0.4);
+          o.start(); o.stop(actx.currentTime + 0.4);
+        }
+      } catch(e) {}
+    }
+
+    function switchTab(num) {
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById('p-content-' + i).style.display = (i === num) ? 'block' : 'none';
+        document.getElementById('ex-content-' + i).style.display = (i === num) ? 'block' : 'none';
+        document.getElementById('tab' + i + '-btn').classList.toggle('active', i === num);
+      }
+      document.getElementById('passagePane').scrollTop = 0;
+      document.getElementById('exercisePane').scrollTop = 0;
+    }
+
+    function checkAnswer(qNum, correctVal, targetId) {
+      const sel = document.getElementById('ctrl-' + qNum);
+      const val = sel.value;
+      if (!val) return;
+      const ok = (val.trim().toLowerCase() === correctVal.trim().toLowerCase());
+      userState[qNum] = ok;
+      sel.className = 'sel-box ' + (ok ? 'correct' : 'wrong');
+      document.getElementById('stat-' + qNum).innerText = ok ? '✅' : '❌';
+      document.getElementById('exp-' + qNum).style.display = 'block';
+      playAudio(ok);
+      if (ok && window.confetti) confetti({ particleCount: 25, spread: 50 });
+      updateStats();
+    }
+
+    function checkFill(qNum, correctArr, targetId) {
+      const inp = document.getElementById('ctrl-' + qNum);
+      const val = inp.value.trim().toLowerCase();
+      if (!val) return;
+      const ok = correctArr.some(c => c.toLowerCase() === val);
+      userState[qNum] = ok;
+      inp.className = 'inp-box ' + (ok ? 'correct' : 'wrong');
+      document.getElementById('stat-' + qNum).innerText = ok ? '✅' : '❌';
+      document.getElementById('exp-' + qNum).style.display = 'block';
+      playAudio(ok);
+      if (ok && window.confetti) confetti({ particleCount: 25, spread: 50 });
+      updateStats();
+    }
+
+    function checkMC(qNum, selectedLetter, correctLetter, targetId) {
+      const ok = (selectedLetter === correctLetter);
+      userState[qNum] = ok;
+      const card = document.getElementById('card-' + qNum);
+      const btns = card.querySelectorAll('.mc-opt');
+      btns.forEach(b => {
+        const letter = b.innerText.trim()[0];
+        if (letter === correctLetter) b.className = 'mc-opt correct';
+        else if (letter === selectedLetter) b.className = 'mc-opt wrong';
+      });
+      document.getElementById('stat-' + qNum).innerText = ok ? '✅' : '❌';
+      document.getElementById('exp-' + qNum).style.display = 'block';
+      playAudio(ok);
+      if (ok && window.confetti) confetti({ particleCount: 25, spread: 50 });
+      updateStats();
+    }
+
+    function toggleT(id) {
+      const el = document.getElementById(id);
+      if (el) el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function locateTarget(targetId) {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('flash-target');
+        setTimeout(() => el.classList.remove('flash-target'), 2200);
+      }
+    }
+
+    function updateStats() {
+      const answered = Object.keys(userState).length;
+      const score = Object.values(userState).filter(x => x).length;
+      document.getElementById('scoreBadge').innerText = '★ ' + score + '/' + totalQ;
+      document.getElementById('countBadge').innerText = answered + '/' + totalQ + ' đã làm';
+      document.getElementById('progressFill').style.width = (answered / totalQ * 100) + '%';
+    }
+
+    document.addEventListener('mouseup', () => {
+      const s = window.getSelection();
+      if (!s || s.isCollapsed || s.rangeCount === 0) return;
+      if (s.toString().trim().length < 2) return;
+      const r = s.getRangeAt(0);
+      const sp = document.createElement('span');
+      sp.className = 'user-highlighted';
+      try { r.surroundContents(sp); s.removeAllRanges(); } catch(e) {}
+    });
+
+    let sec = 1200, timer = null, isRun = false;
+    function toggleTimer() {
+      const btn = document.getElementById('btnTimer');
+      if (!isRun) {
+        isRun = true; btn.innerText = 'TẠM DỪNG';
+        timer = setInterval(() => {
+          if (sec > 0) {
+            sec--;
+            const m = String(Math.floor(sec/60)).padStart(2,'0');
+            const s = String(sec%60).padStart(2,'0');
+            document.getElementById('timerTxt').innerText = m + ':' + s;
+          } else {
+            clearInterval(timer);
+            alert('Đã hết giờ làm bài, vui lòng nộp bài nhé!');
+          }
+        }, 1000);
+      } else {
+        isRun = false; btn.innerText = 'TIẾP TỤC';
+        clearInterval(timer);
+      }
+    }
+
+    function showResult() {
+      const score = Object.values(userState).filter(x => x).length;
+      document.getElementById('modalScoreTxt').innerText = score + ' / ' + totalQ;
+      let msg = '';
+      if (score >= 35) msg = 'Xuất sắc tuyệt đỉnh! Kỹ năng đọc quét và tư duy Paraphrase của bạn đạt chuẩn 9.0!';
+      else if (score >= 28) msg = 'Rất tốt! Bạn nắm bắt ngữ cảnh và bẫy đề rất chắc tay.';
+      else if (score >= 20) msg = 'Khá tốt! Bạn đã đi được một nửa chặng đường, hãy xem lại các dẫn chứng câu chưa đúng nhé.';
+      else msg = 'Hãy luyện tập thêm! Nhớ mở bản dịch từng đoạn để hiểu sâu cấu trúc bài đọc nhé.';
+      document.getElementById('modalMsg').innerText = msg;
+      document.getElementById('modalBg').style.display = 'flex';
+      if (window.confetti) confetti({ particleCount: 80, spread: 80 });
+    }
+  </script>
+</body>
+</html>
